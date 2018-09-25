@@ -1,0 +1,42 @@
+<script>
+    function login(){
+        var usuario = new Object();
+        
+        usuario.usuario = "MartinKpo";
+        usuario.password = "tuvieja";
+        
+        var xhr = new XMLHttpRequest();
+        var method = "POST";
+        var url = "http://localhost:3001/users/login";
+        
+        xhr.open(method, url, true);
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState === XMLHttpRequest.DONE) {
+                console.log(xhr.responseText);
+            };
+        }
+
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify(usuario));
+    }
+
+    function getUsers(){
+        var xhr = new XMLHttpRequest();
+        var method = "GET";        
+        var url = "http://localhost:3001/users/getUsers";
+        
+        xhr.open(method, url, true);
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState === XMLHttpRequest.DONE) {
+                console.log(xhr.responseText);
+            };
+        }
+
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.send();
+    }
+
+    login();
+    getUsers();
+</script>
